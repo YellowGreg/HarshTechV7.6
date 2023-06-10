@@ -27709,15 +27709,6 @@ local Section = Tab:NewSection("Note: We do not claim ownership of these scripts
 local Section = Tab:NewSection("UI Framework: Kavo.")
 local Section = Tab:NewSection("Join Our Discord for Support and Updates")
 local Section = Tab:NewSection("Report Bugs or Non-functioning Scripts on Discord")
-Section:NewButton("Discord Invite","?",function()
-coroutine.wrap(function() 
-    local inviteModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Discord%20Inviter/Source.lua"))()
-    inviteModule.Prompt({
-	    name = "AdvanceFalling | Obfuscator or Script? | 2023",
-	    invite = "https://discord.gg/MzeSqBBpCh",
-    })
-end)()
-end)
 Section:NewButton("Copy Discord Link", "Discord", function()
     setclipboard("https://discord.gg/MzeSqBBpCh")
 end)
