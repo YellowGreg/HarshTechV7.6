@@ -27709,6 +27709,15 @@ local Section = Tab:NewSection("Note: We do not claim ownership of these scripts
 local Section = Tab:NewSection("UI Framework: Kavo.")
 local Section = Tab:NewSection("Join Our Discord for Support and Updates")
 local Section = Tab:NewSection("Report Bugs or Non-functioning Scripts on Discord")
+Section:NewButton("Discord Invite","?",function()
+coroutine.wrap(function() 
+    local inviteModule = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Discord%20Inviter/Source.lua"))()
+    inviteModule.Prompt({
+	    name = "AdvanceFalling | Obfuscator or Script? | 2023",
+	    invite = "https://discord.gg/MzeSqBBpCh",
+    })
+end)()
+end)
 Section:NewButton("Copy Discord Link", "Discord", function()
     setclipboard("https://discord.gg/MzeSqBBpCh")
 end)
@@ -27719,13 +27728,13 @@ local Frame = Instance.new("ImageLabel")
 local TextButton = Instance.new("TextButton")
 
 -- Properties:
-ScreenGui.Parent = game.CoreGui
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 
 Frame.Name = "Frame"
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 Frame.BackgroundTransparency = 1.000
-Frame.Position = UDim2.new(0, 0, 0, 400)
+Frame.Position = UDim2.new(0, 0, 0.65, -100) -- Adjusted position for a 630x360 screen
 Frame.Size = UDim2.new(0, 100, 0, 50)
 Frame.Image = "rbxassetid://3570695787"
 Frame.ImageColor3 = Color3.fromRGB(11, 18, 7)
@@ -27734,17 +27743,20 @@ Frame.ScaleType = Enum.ScaleType.Slice
 Frame.SliceCenter = Rect.new(100, 100, 100, 100)
 Frame.SliceScale = 0.120
 Frame.Active = true
+Frame.ZIndex = 10 -- Set higher ZIndex value
 
 TextButton.Parent = Frame
+TextButton.AnchorPoint = Vector2.new(0, 0.5)
 TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 TextButton.BackgroundTransparency = 1.000
-TextButton.Position = UDim2.new(0, 0, 0, -5)
-TextButton.Size = UDim2.new(0, 100, 0, 60)
+TextButton.Position = UDim2.new(0.022162716, 0, 0.85, -50)
+TextButton.Size = UDim2.new(1, -10, 1, 0) -- Adjusted size to fit within the frame
 TextButton.Font = Enum.Font.SourceSans
 TextButton.Text = "Toggle"
 TextButton.TextColor3 = Color3.fromRGB(0, 34, 255)
 TextButton.TextSize = 20.000
 TextButton.TextWrapped = true
+TextButton.ZIndex = 11 -- Set higher ZIndex value
 TextButton.MouseButton1Down:Connect(function()
     Library:ToggleUI()
 end)
@@ -27779,13 +27791,15 @@ TextButton.InputEnded:Connect(function(input)
 end)
 
 TextButton.InputChanged:Connect(function(input)
-    if draggingEnabled and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+    if draggingEnabled and
+        (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
         updatePosition(input)
     end
 end)
 
 Frame.InputChanged:Connect(function(input)
-    if draggingEnabled and (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+    if draggingEnabled and
+        (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
         updatePosition(input)
     end
 end)
